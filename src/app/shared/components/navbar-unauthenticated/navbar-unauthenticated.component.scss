@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Uni-Sans-Heavy';
+    src: url('/assets/fonts/Uni Sans Heavy.otf') format('opentype');
+  }
+
+@font-face {
+    font-family: 'Poetsen-One';
+    src: url('/assets/fonts/PoetsenOne-Regular.ttf') format('truetype');
+}
+  
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Uni-Sans-Heavy', sans-serif; /* Defina a fonte padrão para o corpo da página */
+    overflow-x: hidden; /* Evita a barra de rolagem horizontal */
+}
+
+/* Estilos para o header */
+header {
+    background-color: #FFB819; /* Laranja Segue-me */
+    color: #FFFFFF;
+    padding: 15px 20px; /* Ajuste conforme necessário */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Cobrir a largura total */
+    position: fixed; /* Manter o cabeçalho fixo no topo */
+    top: 0; /* Alinhar no topo */
+    z-index: 999; /* Garantir que fique acima de outros elementos */
+    left: 0; /* Alinhar à esquerda */
+}
+
+.logo {
+    display: flex;
+    align-items: flex-end; /* Alinha o texto abaixo da logo */
+}
+
+.logo img {
+    width: 150px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto;
+    margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+}
+
+h1 {
+    display: flex;
+    flex-direction: column;
+    font-size: 50px; /* Tamanho do texto */
+    font-weight: bold; /* Negrito */
+    margin: 5;
+}
+
+h1 span {
+    margin-bottom: 5px; /* Espaçamento entre os textos */
+    font-family: 'Poetsen-One', sans-serif;
+    font-size: 28px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav li {
+    margin-right: 70px; /* Espaçamento entre os links */
+    white-space: nowrap; /* Impede que os links sejam cortados */
+    overflow: hidden; /* Evita que os links transbordem para fora do cabeçalho */
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Poetsen-One', sans-serif; /* Defina a fonte para os links */
+    font-size: 18px;
+}
+
+/* Estilos para o conteúdo principal */
+main {
+    margin-top: 70px; /* Ajuste conforme necessário para acomodar a altura do cabeçalho */
+    padding: 20px; /* Adicione algum espaço entre o conteúdo e as bordas da tela */
+    box-sizing: border-box; /* Garante que o padding seja contado no cálculo do tamanho do elemento */
+}
