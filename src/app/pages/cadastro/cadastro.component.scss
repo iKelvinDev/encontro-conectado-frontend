@@ -1,0 +1,42 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+body {
+    height: 100%;
+    background-color: #f0f0f0;
+}
+
+.card-body {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fafafa;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 0.25rem;
+}
+
+.form-control:focus {
+    border-color: #8A4A2A;
+    box-shadow: 0 0 0 0.25rem #FFB819;
+}
+
+.btn-primary:hover {
+    background-color: #8A4A2A !important;
+
+}
+
+.btn {
+    background-color: #FFB819;
+    border-radius: 0.20rem;
+}
+
+.focus-custom:focus {
+    background-color: #8A4A2A;
+  }
+
+.form-container {
+    max-width: 350px;
+    padding: 1rem;
+}

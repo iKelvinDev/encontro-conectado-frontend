@@ -9,6 +9,7 @@ import { Component } from '@angular/core';
 })
 export class CadastroComponent {
   cadastro = '';
-  id: any;
+  id = '';
+  nome = '';
 
 }
