@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,4 +13,17 @@ export class LoginComponent {
  email = '';
  id = '';
 
+  email: string = '';
+  senha: string = '';
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login() {
+    this.authService.login({
+      email: this.email,
+      senha: this.senha
+    }).subscribe((response) => {
+      this.router.navigate(['/encontros']);
+    });
+  }
 }
