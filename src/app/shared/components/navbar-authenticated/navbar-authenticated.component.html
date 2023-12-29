@@ -1,20 +1,18 @@
-<p>navbar-authenticated works!</p><header>
-    <nav class="navbar navbar-expand-lg sticky-top p-0 px-4 px-lg-5" style="top: -100px">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-            <img class="logo-img" src="/assets/logos/5 Logotipo OFICIAL do SEGUE-ME_Especial Negativo.png" alt="Logo SEGUE-ME">
-        </a>
-        <div class="navbar-text d-none d-lg-block mx-auto">
-            <h1 class="header-title">
-                <span class="block-text">Encontro</span>
-                <span class="block-text">Conectado</span>
-            </h1>
+<nav class="navbar navbar-expand-lg sticky-top p-0 px-4 px-lg-5" style="top: -100px">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+        <img class="logo-img" src="/assets/logos/5 Logotipo OFICIAL do SEGUE-ME_Especial Negativo.png" alt="Logo SEGUE-ME">
+    </a>
+    <div class="navbar-text d-none d-lg-block mx-auto">
+        <h1 class="header-title">
+            <span class="block-text">Encontro</span>
+            <span class="block-text">Conectado</span>
+        </h1>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" routerLink="/profile">PERFIL</a>
+            <a class="nav-item nav-link" routerLink="/encontros">ENCONTROS</a>
+            <a class="nav-item nav-link" (click)="logout()">SAIR</a>
         </div>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" routerLink="/profile">PERFIL</a>
-                <a class="nav-item nav-link" routerLink="/encontros">ENCONTROS</a>
-                <a class="nav-item nav-link" (click)="logout()">SAIR</a>
-            </div>
-        </div>
-    </nav>
-</header>
+    </div>
+</nav>

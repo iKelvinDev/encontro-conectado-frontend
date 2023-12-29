@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarAuthenticatedComponent } from './shared/components/navbar-authenticated/navbar-authenticated.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MatButtonModule } from '@angular/material/button';
     HomeComponent,
     NavbarUnauthenticatedComponent,
     LoginComponent,
-    NavbarAuthenticatedComponent
+    NavbarAuthenticatedComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
