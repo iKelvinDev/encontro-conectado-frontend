@@ -8,10 +8,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
- nome = '';
- cpf = '';
- email = '';
- id = '';
 
   email: string = '';
   senha: string = '';
@@ -26,4 +22,5 @@ export class LoginComponent {
       this.router.navigate(['/encontros']);
     });
   }
+  
 }
