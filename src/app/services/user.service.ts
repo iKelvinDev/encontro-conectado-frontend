@@ -17,4 +17,9 @@ export class UserService {
   getAddressData(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/address`);
   }
+
+  cadastrarUsuario(userData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/cadastrar-usuario`, userData);
+  }
+  
 }

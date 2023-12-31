@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
+import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
     NavbarAuthenticatedComponent,
     FooterComponent,
     ProfileComponent,
-    QuemSomosComponent
+    QuemSomosComponent,
+    CadastroUsuarioComponent
   ],
   imports: [
     BrowserModule,
