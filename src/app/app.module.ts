@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     LoginComponent,
     NavbarAuthenticatedComponent,
     FooterComponent,
-    ProfileComponent
+    ProfileComponent,
+    QuemSomosComponent
   ],
   imports: [
     BrowserModule,
