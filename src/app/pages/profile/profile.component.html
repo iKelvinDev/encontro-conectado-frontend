@@ -1,22 +1,41 @@
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-6">
-      <h3>Informações Pessoais</h3>
-      <p><strong>Nome:</strong> {{ user.nome }}</p>
-      <p><strong>Telefone:</strong> {{ user.telefone }}</p>
-      <p><strong>Data de Nascimento:</strong> {{ user.dataNascimento }}</p>
-      <p><strong>Sexo:</strong> {{ user.sexo }}</p>
-      <p><strong>Escolaridade:</strong> {{ user.escolaridade }}</p>
-    </div>
-    <div class="col-md-6">
-      <h3>Endereço</h3>
-      <p><strong>CEP:</strong> {{ endereco.cep }}</p>
-      <p><strong>Estado:</strong> {{ endereco.estado }}</p>
-      <p><strong>Cidade:</strong> {{ endereco.cidade }}</p>
-      <p><strong>Rua:</strong> {{ endereco.rua }}</p>
-      <p><strong>Número:</strong> {{ endereco.numero }}</p>
-      <p><strong>Bairro:</strong> {{ endereco.bairro }}</p>
-      <p><strong>Complemento:</strong> {{ endereco.complemento }}</p>
+<app-navbar-authenticated></app-navbar-authenticated>
+
+<div class="wrapper">
+  <div class="main-content">
+    <div class="container mt-5 mb-5">
+      <div class="row justify-content-center">
+        <!-- Seção do perfil do usuário -->
+        <div class="col-md-8">
+          <div class="profile-card">
+            <div class="profile-header">
+              <h3>{{ user.nome }}</h3>
+              <p>{{ user.email.substring(0, 3) }}****{{ user.email.substring(user.email.lastIndexOf('@')) }}</p>
+            </div>
+            <div class="profile-body">
+              <h4>Informações Pessoais</h4>
+              <ul>
+                <li><strong>Nome:</strong> {{ user.nome }}</li>
+                <li><strong>E-mail:</strong> {{ user.email }}</li>
+                <li><strong>Telefone:</strong> {{ user.telefone }}</li>
+                <li><strong>Data de Nascimento:</strong> {{ user.dataNascimento }}</li>
+                <li><strong>Sexo:</strong> {{ user.sexo }}</li>
+                <li><strong>Escolaridade:</strong> {{ user.escolaridade }}</li>
+              </ul>
+              <h4>Endereço</h4>
+              <ul>
+                <li><strong>CEP:</strong> {{ endereco.cep }}</li>
+                <li><strong>Estado:</strong> {{ endereco.estado }}</li>
+                <li><strong>Cidade:</strong> {{ endereco.cidade }}</li>
+                <li><strong>Rua:</strong> {{ endereco.rua }}</li>
+                <li><strong>Número:</strong> {{ endereco.numero }}</li>
+                <li><strong>Bairro:</strong> {{ endereco.bairro }}</li>
+                <li><strong>Complemento:</strong> {{ endereco.complemento }}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+  <app-footer></app-footer>
 </div>
