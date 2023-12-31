@@ -1,0 +1,19 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.quem-somos-wrapper {
+    padding-bottom: 70px; /* Ajuste conforme necessário */
+  }
+  
+  /* Estilização para o texto */
+  .quem-somos-wrapper p {
+    text-align: justify;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  /* Estilização para a imagem */
+  .quem-somos-wrapper img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }

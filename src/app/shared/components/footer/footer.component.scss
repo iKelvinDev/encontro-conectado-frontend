@@ -1,0 +1,53 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: 8px 0;
+
+  .container {
+    display: flex;
+    justify-content: flex-start; /* Alinhamento à esquerda */
+    align-items: center;
+  }
+
+  .col-md-6 {
+    display: flex; /* Use flex para controlar o alinhamento */
+    justify-content: flex-start; /* Alinhamento à esquerda */
+    align-items: flex-start; /* Alinhamento à esquerda */
+  }
+
+  .logo-img {
+    max-width: 135px;
+    height: auto;
+    margin-right: 20px;
+  }
+
+  .header-title {
+    font-family: 'Poetsen-One', sans-serif;
+    font-size: 22px;
+    margin: 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-title .block-text {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .text-muted {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  p.text-muted {
+    color: #fff !important;
+  }
+}
+
+.footer.bg-dark {
+  background-color: #000 !important;
+}
