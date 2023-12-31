@@ -8,8 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroComponent {
-  cadastro = '';
-  id = '';
-  nome = '';
+ 
+  nome: string = '';
+  email: string = '';
+  senha: string = '';
+  id: string = '';
 
 }
