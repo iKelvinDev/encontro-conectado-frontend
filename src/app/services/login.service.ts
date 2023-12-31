@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LoginComponent } from './pages/login/login.component';
-import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { LoginComponent } from '../pages/login/login.component';
+import { CadastroComponent } from '../pages/cadastro/cadastro.component';
 
 @Injectable({
   providedIn: 'root',

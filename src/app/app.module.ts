@@ -13,6 +13,7 @@ import { NavbarAuthenticatedComponent } from './shared/components/navbar-authent
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
     NavbarUnauthenticatedComponent,
     LoginComponent,
     NavbarAuthenticatedComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
