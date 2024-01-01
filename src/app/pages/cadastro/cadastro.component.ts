@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
+import { Participante } from 'src/app/modelo/Participante';
 
 @Component({
   selector: 'app-cadastro',
@@ -8,30 +9,66 @@ import { Router } from '@angular/router';
   styleUrls: ['./cadastro.component.scss']
 })
 export class CadastroUsuarioComponent {
-  user: any = {};
-  endereco: any = {};
   submitted = false;
   hasError = false;
+  novoParticipante: Participante = {
+    id: 0,
+    login: '',
+    senha: '',
+    nome: '',
+    telefone: '',
+    dataNascimento: '',
+    sexo: '',
+    escolaridade: '',
+    endereco: {
+      cep: '',
+      estado: '',
+      cidade: '',
+      rua: '',
+      numero: 0,
+      bairro: '',
+      complemento: ''
+    },
+    permissoes: [],
+    encontros: []
+  };
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private UserService: UserService, private router: Router,) { }
 
-  submitForm(): void {
-    const userData = {
-      user: this.user,
-      endereco: this.endereco
-    };
-
-    this.userService.cadastrarUsuario(userData).subscribe({
-      next: (data) => {
-        console.log('Usuário cadastrado com sucesso', data);
-        this.submitted = true;
-
-        this.router.navigate(['/login']);
+  cadastrarParticipante(): void {
+    this.UserService.criarParticipante(this.novoParticipante).subscribe(
+      (data: Participante) => {
+        console.log('Participante criado:', data);
+        // Limpar os campos após o cadastro bem-sucedido
+        this.novoParticipante = {
+          id: 0,
+          login: '',
+          senha: '',
+          nome: '',
+          telefone: '',
+          dataNascimento: '',
+          sexo: '',
+          escolaridade: '',
+          endereco: {
+            cep: '',
+            estado: '',
+            cidade: '',
+            rua: '',
+            numero: 0,
+            bairro: '',
+            complemento: ''
+          },
+          permissoes: [],
+          encontros: []
+        };
+        this.redirecionarParaLogin();
       },
-      error: (error) => {
-        console.error('Erro ao cadastrar usuário', error);
-        this.hasError = true;
+      (error: any) => {
+        console.error('Erro ao cadastrar o participante:', error);
       }
-    });
+    );
+  }
+  redirecionarParaLogin(): void {
+    this.router.navigate(['/login']);
   }
 }

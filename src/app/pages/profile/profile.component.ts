@@ -1,5 +1,8 @@
+import { Endereco } from './../../modelo/Participante';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { ProfileService } from 'src/app/services/profile.service';
+import { Participante } from './../../modelo/Participante';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,35 +10,28 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: any = {};
-  endereco: any = {};
+  user: Participante | undefined;
+  userId = 1
+  constructor(private profileService: ProfileService, private authService: AuthService) { }
 
-  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.getUserData();
-    this.getAddressData();
+    // Obtém o ID do participante do serviço de autenticação
+    if (this.userId) {
+      this.getProfileData();
+    }
   }
 
-  getUserData(): void {
-    this.userService.getUserData().subscribe({
-      next: (data) => {
-        this.user = data;
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
-  }
-  
-  getAddressData(): void {
-    this.userService.getAddressData().subscribe({
-      next: (data) => {
-        this.endereco = data;
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+  getProfileData(): void {
+    if (this.userId) {
+      this.profileService.getProfile(this.userId).subscribe(
+        (data: Participante) => {
+          this.user = data;
+        },
+        (error) => {
+          console.error('Erro ao obter os dados do perfil:', error);
+        }
+      );
+    }
   }
 }

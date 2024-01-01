@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration  } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarAuthenticatedComponent } from './shared/components/navbar-authenticated/navbar-authenticated.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS  } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
-
+import { tokenInterceptor } from './token.interceptor';
+import { EncontroComponent } from './pages/encontro/encontro.component';
+import { CronogramaComponent } from './pages/cronograma/cronograma.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +29,9 @@ import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
     FooterComponent,
     ProfileComponent,
     QuemSomosComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    EncontroComponent,
+    CronogramaComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,14 @@ import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
     ReactiveFormsModule,
     MatButtonModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: tokenInterceptor,
+      multi: true
+    },
+    provideClientHydration()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

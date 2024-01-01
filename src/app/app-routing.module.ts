@@ -5,6 +5,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
+import { EncontroComponent } from './pages/encontro/encontro.component';
+import { CronogramaComponent } from './pages/cronograma/cronograma.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,7 +14,9 @@ const routes: Routes = [
   { path: 'quem-somos', component: QuemSomosComponent },
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroUsuarioComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'encontros', component: EncontroComponent },
+  { path: 'cronograma', component: CronogramaComponent }
 ];
 
 @NgModule({
