@@ -19,6 +19,11 @@ import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
 import { tokenInterceptor } from './token.interceptor';
 import { EncontroComponent } from './pages/encontro/encontro.component';
 import { CronogramaComponent } from './pages/cronograma/cronograma.component';
+import { EquipeComponent } from './pages/equipe/equipe.component';
+import { TarefaComponent } from './pages/tarefa/tarefa.component';
+import { TableModule } from 'primeng/table';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +36,9 @@ import { CronogramaComponent } from './pages/cronograma/cronograma.component';
     QuemSomosComponent,
     CadastroUsuarioComponent,
     EncontroComponent,
-    CronogramaComponent
+    CronogramaComponent,
+    EquipeComponent,
+    TarefaComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import { CronogramaComponent } from './pages/cronograma/cronograma.component';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    MatButtonModule
+    MatButtonModule,
+    TableModule
   ],
   providers: [
     {
@@ -52,5 +60,6 @@ import { CronogramaComponent } from './pages/cronograma/cronograma.component';
     provideClientHydration()
   ],
   bootstrap: [AppComponent]
+
 })
 export class AppModule { }

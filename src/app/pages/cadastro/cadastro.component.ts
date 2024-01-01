@@ -29,7 +29,6 @@ export class CadastroUsuarioComponent {
       bairro: '',
       complemento: ''
     },
-    permissoes: [],
     encontros: []
   };
 
@@ -58,7 +57,6 @@ export class CadastroUsuarioComponent {
             bairro: '',
             complemento: ''
           },
-          permissoes: [],
           encontros: []
         };
         this.redirecionarParaLogin();

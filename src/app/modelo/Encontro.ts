@@ -1,4 +1,6 @@
 import { Cronograma } from 'src/app/modelo/Cronograma';
+import { Participante } from './Participante';
+
 export interface Encontro {
   id: number;
   titulo: string;
@@ -19,11 +21,11 @@ export interface Endereco {
   complemento: string;
 }
 
-export interface Participante {
+/* export interface Participante {
   id: number;
   nome: string;
   // Propriedades relevantes do Participante
-}
+} */
 
 /* export interface Cronograma {
   nome: string;

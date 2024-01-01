@@ -9,7 +9,7 @@ import { CronogramaService } from 'src/app/services/cronograma.service';
   templateUrl: './cronograma.component.html',
   styleUrls: ['./cronograma.component.scss']
 })
-export class CronogramaComponent {
+export class CronogramaComponent implements OnInit {
   cronogramas: Cronograma[] = [];;
   novoCronograma: Cronograma = {
     id: 0,
@@ -22,6 +22,7 @@ export class CronogramaComponent {
     }
   };
   erroCriacaoCronograma = false;
+  
   constructor(private cronogramaService: CronogramaService) { }
 
   ngOnInit(): void {

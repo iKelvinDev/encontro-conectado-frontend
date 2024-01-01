@@ -1,3 +1,5 @@
+<app-navbar-authenticated></app-navbar-authenticated>
+
 <div class="wrapper">
   <div class="main-content">
     <div class="container mt-5 mb-5">
@@ -52,17 +54,30 @@
             </div>
           </div>
 
-          <!-- Lista de Cronogramas -->
           <div class="container mt-5">
             <h4>Lista de Cronogramas</h4>
-            <ul class="list-group">
-              <li *ngFor="let cronograma of cronogramas" class="list-group-item">
-                <div>
-                  <strong>ID: </strong> {{ cronograma.id }}
-                </div>
-                <!-- Adicione as propriedades que deseja exibir -->
-              </li>
-            </ul>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Atividade</th>
+                  <th>Dia</th>
+                  <th>Data</th>
+                  <th>Hora</th>
+                  <th>Encontro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let cronograma of cronogramas">
+                  <td>{{ cronograma.id }}</td>
+                  <td>{{ cronograma.nomeAtividade }}</td>
+                  <td>{{ cronograma.diaSemana }}</td>
+                  <td>{{ cronograma.data }}</td>
+                  <td>{{ cronograma.hora }}</td>
+                  <td>{{ cronograma.encontro.id }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

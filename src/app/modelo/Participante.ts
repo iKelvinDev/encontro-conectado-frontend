@@ -1,3 +1,5 @@
+import { Encontro } from './Encontro';
+
 export interface Participante {
   id?: number;
   login: string;
@@ -8,7 +10,6 @@ export interface Participante {
   sexo: string;
   escolaridade: string;
   endereco: Endereco; // Referência ao modelo de endereço
-  permissoes: Permissao[];
   encontros: Encontro[];
 }
 
@@ -21,10 +22,11 @@ export interface Endereco {
   bairro: string;
   complemento: string;
 }
-export interface Permissao {
+/* export interface Permissao {
   // Defina os detalhes da permissão, se necessário
 }
 
 export interface Encontro {
   // Defina os detalhes do encontro, se necessário
 }
+ */

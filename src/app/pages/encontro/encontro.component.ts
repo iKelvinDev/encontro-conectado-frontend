@@ -11,6 +11,8 @@ import { Router } from '@angular/router';
 })
 export class EncontroComponent implements OnInit {
   encontros: Encontro[] = [];
+  submitted = false;
+  hasError = false;
   novoencontro: Encontro = {
     id: 0,
     titulo: '',
