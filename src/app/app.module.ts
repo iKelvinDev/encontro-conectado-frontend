@@ -16,6 +16,8 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
+import { EncontroComponent } from './pages/encontro/encontro.component';
+import { CronogramaComponent } from './pages/cronograma/cronograma.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
     FooterComponent,
     ProfileComponent,
     QuemSomosComponent,
-    CadastroUsuarioComponent
+    CadastroUsuarioComponent,
+    EncontroComponent,
+    CronogramaComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,72 @@
+<div class="wrapper">
+    <div class="main-content">
+      <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="cadastro-card">
+              <div class="cadastro-header">
+                <form (ngSubmit)="criarNovoCronograma()" #cadastroForm="ngForm">
+                  <!-- Criação de Novo Cronograma -->
+                  <h4>Criação de Novo Cronograma</h4>
+                  <div class="form-group">
+                    <label for="nomeAtividade">Nome da Atividade</label>
+                    <input type="text" class="form-control" id="nomeAtividade" name="nomeAtividade" [(ngModel)]="novoCronograma.nomeAtividade" required>
+                  </div>
+                   <!-- Dia da semana -->
+                   <div class="form-group">
+                    <label for="diaSemana">Dia da Semana</label>
+                    <select class="form-control" id="diaSemana" name="diaSemana" [(ngModel)]="novoCronograma.diaSemana" required>
+                      <option value="SEGUNDA">Segunda-feira</option>
+                      <option value="TERCA">Terça-feira</option>
+                      <option value="QUARTA">Quarta-feira</option>
+                      <option value="QUINTA">Quinta-feira</option>
+                      <option value="SEXTA">Sexta-feira</option>
+                      <option value="SABADO">Sabado</option>
+                      <option value="DOMINGO">Domingo</option>
+                      <!-- ... Opções para os outros dias da semana ... -->
+                    </select>
+                  </div>
+                  <!-- Data -->
+                  <div class="form-group">
+                    <label for="data">Data</label>
+                    <input type="date" class="form-control" id="data" name="data" [(ngModel)]="novoCronograma.data" required>
+                  </div>
+                  <!-- Hora -->
+                  <div class="form-group">
+                    <label for="hora">Hora</label>
+                    <input type="time" class="form-control" id="hora" name="hora" [(ngModel)]="novoCronograma.hora" required>
+                  </div>
+                  <!-- Encontro ID -->
+                  <div class="form-group">
+                    <label for="encontroId">ID do Encontro</label>
+                    <input type="number" class="form-control" id="encontroId" name="encontroId" [(ngModel)]="novoCronograma.encontro.id" required>
+                  </div>
+  
+                  <!-- Mensagem de erro na criação -->
+                  <div *ngIf="erroCriacaoCronograma" class="alert alert-danger" role="alert">
+                    Ocorreu um erro ao criar o cronograma. Por favor, tente novamente.
+                  </div>
+  
+                  <button type="submit" class="btn btn-primary w-100 py-2 mt-2 focus-custom mt-4">Criar Cronograma</button>
+                </form>
+              </div>
+            </div>
+  
+            <!-- Lista de Cronogramas -->
+            <div class="container mt-5">
+              <h4>Lista de Cronogramas</h4>
+              <ul class="list-group">
+                <li *ngFor="let cronograma of cronogramas" class="list-group-item">
+                  <div>
+                    <strong>ID: </strong> {{ cronograma.id }}
+                  </div>
+                  <!-- Adicione as propriedades que deseja exibir -->
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+  </div>

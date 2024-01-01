@@ -1,0 +1,134 @@
+<button mat-button class="logoff-button "  (click)="onLogoff()">Logoff</button>
+<button mat-button class="profile "  (click)="profile()">PROFILE</button>
+<h2>Criar Novo Encontro</h2>
+<form (submit)="criarNovoEncontro()">
+  <label>
+    Título:
+    <input type="text" [(ngModel)]="novoencontro.titulo" name="titulo" required>
+  </label>
+  <label>
+    Ano:
+    <input type="number" [(ngModel)]="novoencontro.ano" name="ano" required>
+  </label>
+  <label>
+    CEP:
+    <input type="text" [(ngModel)]="novoencontro.endereco.cep" name="cep" required>
+  </label>
+  <label>
+    Estado:
+    <input type="text" [(ngModel)]="novoencontro.endereco.estado" name="estado" required>
+  </label>
+  <label>
+    Cidade:
+    <input type="text" [(ngModel)]="novoencontro.endereco.cidade" name="cidade" required>
+  </label>
+  <label>
+    Rua:
+    <input type="text" [(ngModel)]="novoencontro.endereco.rua" name="rua" required>
+  </label>
+  <label>
+    Número:
+    <input type="number" [(ngModel)]="novoencontro.endereco.numero" name="numero" required>
+  </label>
+  <label>
+    Bairro:
+    <input type="text" [(ngModel)]="novoencontro.endereco.bairro" name="bairro" required>
+  </label>
+  <label>
+    Complemento:
+    <input type="text" [(ngModel)]="novoencontro.endereco.complemento" name="complemento">
+  </label>
+
+  <button type="submit">Criar Encontro</button>
+</form>
+
+<hr>
+
+<!-- Lista de encontros -->
+<h2>Lista de Encontros</h2>
+<ul>
+  <li *ngFor="let encontro of encontros">
+    {{ encontro.titulo }}
+    <button (click)="detalharEncontro(encontro.id)">Detalhar</button>
+    <button (click)="editarEncontro(encontro)">Editar</button>
+    <button (click)="excluirEncontro(encontro.id)">Excluir</button>
+    <!-- Adicione botões ou links para detalhar ou excluir encontros -->
+  </li>
+</ul>
+
+<!-- Formulário para editar um encontro -->
+<div *ngIf="encontroDetalhado && encontroEditando">
+  <h2>Editar Encontro</h2>
+  <form (submit)="atualizarEncontro()">
+    <input type="hidden" [(ngModel)]="encontroDetalhado.id" name="id">
+
+    <label>
+      Título:
+      <input type="text" [(ngModel)]="encontroDetalhado.titulo" name="titulo" required>
+    </label>
+
+    <label>
+      Ano:
+      <input type="number" [(ngModel)]="encontroDetalhado.ano" name="ano" required>
+    </label>
+
+    <!-- Campos do Endereço -->
+    <h3>Endereço:</h3>
+    <label>
+      CEP:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.cep" name="cep" required>
+    </label>
+
+    <label>
+      Estado:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.estado" name="estado" required>
+    </label>
+
+    <label>
+      Cidade:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.cidade" name="cidade" required>
+    </label>
+
+    <label>
+      Rua:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.rua" name="rua" required>
+    </label>
+
+    <label>
+      Número:
+      <input type="number" [(ngModel)]="encontroDetalhado.endereco.numero" name="numero" required>
+    </label>
+
+    <label>
+      Bairro:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.bairro" name="bairro" required>
+    </label>
+
+    <label>
+      Complemento:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.complemento" name="complemento">
+    </label>
+    <!-- Fim dos campos do Endereço -->
+
+    <!-- Adicione outros campos necessários para editar um encontro -->
+
+    <button type="submit">Salvar Alterações</button>
+    <button (click)="cancelarEdicao()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Detalhes do encontro selecionado -->
+<div *ngIf="encontroDetalhado && !encontroEditando">
+  <h2>Detalhes do Encontro</h2>
+  <p>ID: {{ encontroDetalhado.id }}</p>
+  <p>Título: {{ encontroDetalhado.titulo }}</p>
+  <p>Ano: {{ encontroDetalhado.ano }}</p>
+  <p>CEP: {{ encontroDetalhado.endereco.cep }}</p>
+  <p>Estado: {{ encontroDetalhado.endereco.estado }}</p>
+  <p>Cidade: {{ encontroDetalhado.endereco.cidade }}</p>
+  <p>Rua: {{ encontroDetalhado.endereco.rua }}</p>
+  <p>Número: {{ encontroDetalhado.endereco.numero }}</p>
+  <p>Bairro: {{ encontroDetalhado.endereco.bairro }}</p>
+  <p>Complemento: {{ encontroDetalhado.endereco.complemento }}</p>
+  <!-- Adicione outros detalhes específicos do encontro -->
+</div>
