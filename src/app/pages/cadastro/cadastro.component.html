@@ -7,25 +7,25 @@
         <div class="col-md-8">
           <div class="cadastro-card">
             <div class="cadastro-header">
-              <form (ngSubmit)="submitForm()" #cadastroForm="ngForm">
-                
+              <form (ngSubmit)="cadastrarParticipante()" #cadastroForm="ngForm">
+
                 <!-- Informações Pessoais -->
                 <h4>Informações Pessoais</h4>
                 <div class="form-group">
                   <label for="nome">Nome</label>
-                  <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="user.nome" required>
+                  <input type="text" class="form-control" id="nome" name="nome" [(ngModel)]="novoParticipante.nome" required>
                 </div>
                 <div class="form-group">
                   <label for="telefone">Telefone</label>
-                  <input type="tel" class="form-control" id="telefone" name="telefone" [(ngModel)]="user.telefone" required>
+                  <input type="tel" class="form-control" id="telefone" name="telefone" [(ngModel)]="novoParticipante.telefone" required>
                 </div>
                 <div class="form-group">
                   <label for="dataNascimento">Data de Nascimento</label>
-                  <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" [(ngModel)]="user.dataNascimento" required>
+                  <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" [(ngModel)]="novoParticipante.dataNascimento" required>
                 </div>
                 <div class="form-group">
                   <label for="sexo">Sexo</label>
-                  <select class="form-control" id="sexo" name="sexo" [(ngModel)]="user.sexo" required>
+                  <select class="form-control" id="sexo" name="sexo" [(ngModel)]="novoParticipante.sexo" required>
                     <option value="masculino">Masculino</option>
                     <option value="feminino">Feminino</option>
                     <option value="outro">Outro</option>
@@ -33,59 +33,59 @@
                 </div>
                 <div class="form-group">
                   <label for="escolaridade">Escolaridade</label>
-                  <input type="text" class="form-control" id="escolaridade" name="escolaridade" [(ngModel)]="user.escolaridade" required>
+                  <input type="text" class="form-control" id="escolaridade" name="escolaridade" [(ngModel)]="novoParticipante.escolaridade" required>
                 </div>
 
                 <!-- Endereço -->
                 <h4>Endereço</h4>
                 <div class="form-group">
                   <label for="cep">CEP</label>
-                  <input type="text" class="form-control" id="cep" name="cep" [(ngModel)]="endereco.cep" required>
+                  <input type="text" class="form-control" id="cep" name="cep" [(ngModel)]="novoParticipante.endereco.cep" required>
                 </div>
                 <div class="form-group">
                   <label for="estado">Estado</label>
-                  <input type="text" class="form-control" id="estado" name="estado" [(ngModel)]="endereco.estado" required>
+                  <input type="text" class="form-control" id="estado" name="estado" [(ngModel)]="novoParticipante.endereco.estado" required>
                 </div>
                 <div class="form-group">
                   <label for="cidade">Cidade</label>
-                  <input type="text" class="form-control" id="cidade" name="cidade" [(ngModel)]="endereco.cidade" required>
+                  <input type="text" class="form-control" id="cidade" name="cidade" [(ngModel)]="novoParticipante.endereco.cidade" required>
                 </div>
                 <div class="form-group">
                   <label for="rua">Rua</label>
-                  <input type="text" class="form-control" id="rua" name="rua" [(ngModel)]="endereco.rua" required>
+                  <input type="text" class="form-control" id="rua" name="rua" [(ngModel)]="novoParticipante.endereco.rua" required>
                 </div>
                 <div class="form-group">
                   <label for="numero">Número</label>
-                  <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="endereco.numero" required>
+                  <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="novoParticipante.endereco.numero" required>
                 </div>
                 <div class="form-group">
                   <label for="bairro">Bairro</label>
-                  <input type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="endereco.bairro" required>
+                  <input type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="novoParticipante.endereco.bairro" required>
                 </div>
                 <div class="form-group">
                   <label for="complemento">Complemento</label>
-                  <input type="text" class="form-control" id="complemento" name="complemento" [(ngModel)]="endereco.complemento" required>
+                  <input type="text" class="form-control" id="complemento" name="complemento" [(ngModel)]="novoParticipante.endereco.complemento" required>
                 </div>
 
                 <!-- Dados de Login -->
                 <h4>Dados de Login</h4>
                 <div class="form-group">
-                  <label for="emailLogin">E-mail</label>
-                  <input type="email" class="form-control" id="emailLogin" name="emailLogin" [(ngModel)]="user.emailLogin" required>
+                  <label for="Login">Login</label>
+                  <input type="login" class="form-control" id="Login" name="login" [(ngModel)]="novoParticipante.login" required>
                 </div>
                 <div class="form-group">
                   <label for="senha">Senha</label>
-                  <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="user.senha" required>
+                  <input type="password" class="form-control" id="senha" name="senha" [(ngModel)]="novoParticipante.senha" required>
                 </div>
 
-                <!-- Mensagem de sucesso -->
-                <div *ngIf="submitted && !hasError" class="alert alert-success" role="alert">
-                  Usuário cadastrado com sucesso!
-                </div>
-
-                <!-- Mensagem de erro -->
-                <div *ngIf="submitted && hasError" class="alert alert-danger" role="alert">
-                  Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente.
+                <!-- Mensagem de sucesso ou erro -->
+                <div *ngIf="submitted" class="alert" [ngClass]="{'alert-success': !hasError, 'alert-danger': hasError}" role="alert">
+                  <ng-container *ngIf="!hasError; else error">
+                    Usuário cadastrado com sucesso!
+                  </ng-container>
+                  <ng-template #error>
+                    Ocorreu um erro ao cadastrar o usuário. Por favor, tente novamente.
+                  </ng-template>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100 py-2 mt-2 focus-custom mt-4">Cadastrar</button>

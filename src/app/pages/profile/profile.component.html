@@ -5,17 +5,17 @@
     <div class="container mt-5 mb-5">
       <div class="row justify-content-center">
         <!-- Seção do perfil do usuário -->
-        <div class="col-md-8">
+        <div class="col-md-8" *ngIf="user">
           <div class="profile-card">
             <div class="profile-header">
               <h3>{{ user.nome }}</h3>
-              <p>{{ user.email.substring(0, 3) }}****{{ user.email.substring(user.email.lastIndexOf('@')) }}</p>
+              <!-- <p>{{ user.email.substring(0, 3) }}****{{ user.email.substring(user.email.lastIndexOf('@')) }}</p> -->
             </div>
             <div class="profile-body">
               <h4>Informações Pessoais</h4>
               <ul>
                 <li><strong>Nome:</strong> {{ user.nome }}</li>
-                <li><strong>E-mail:</strong> {{ user.email }}</li>
+                <!-- <li><strong>E-mail:</strong> {{ user.email }}</li> -->
                 <li><strong>Telefone:</strong> {{ user.telefone }}</li>
                 <li><strong>Data de Nascimento:</strong> {{ user.dataNascimento }}</li>
                 <li><strong>Sexo:</strong> {{ user.sexo }}</li>
@@ -23,13 +23,13 @@
               </ul>
               <h4>Endereço</h4>
               <ul>
-                <li><strong>CEP:</strong> {{ endereco.cep }}</li>
-                <li><strong>Estado:</strong> {{ endereco.estado }}</li>
-                <li><strong>Cidade:</strong> {{ endereco.cidade }}</li>
-                <li><strong>Rua:</strong> {{ endereco.rua }}</li>
-                <li><strong>Número:</strong> {{ endereco.numero }}</li>
-                <li><strong>Bairro:</strong> {{ endereco.bairro }}</li>
-                <li><strong>Complemento:</strong> {{ endereco.complemento }}</li>
+                <li><strong>CEP:</strong> {{ user.endereco.cep }}</li>
+                <li><strong>Estado:</strong> {{ user.endereco.estado }}</li>
+                <li><strong>Cidade:</strong> {{ user.endereco.cidade }}</li>
+                <li><strong>Rua:</strong> {{ user.endereco.rua }}</li>
+                <li><strong>Número:</strong> {{ user.endereco.numero }}</li>
+                <li><strong>Bairro:</strong> {{ user.endereco.bairro }}</li>
+                <li><strong>Complemento:</strong> {{ user.endereco.complemento }}</li>
               </ul>
             </div>
           </div>
