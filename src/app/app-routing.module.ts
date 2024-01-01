@@ -7,8 +7,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 import { EncontroComponent } from './pages/encontro/encontro.component';
 import { CronogramaComponent } from './pages/cronograma/cronograma.component';
-import { EquipeComponent } from './pages/equipe/equipe.component';
 import { TarefaComponent } from './pages/tarefa/tarefa.component';
+import { EquipeComponent } from './pages/equipe/equipe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -17,10 +17,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroUsuarioComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'encontro', component: EncontroComponent },
+  { path: 'encontros', component: EncontroComponent },
   { path: 'cronograma', component: CronogramaComponent },
-  { path: 'equipe', component: EquipeComponent },
-  { path: 'tarefa', component: TarefaComponent }
+  { path: 'tarefa', component: TarefaComponent },
+  { path: 'equipe', component: EquipeComponent }
 ];
 
 @NgModule({

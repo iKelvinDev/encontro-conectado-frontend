@@ -1,38 +1,50 @@
-<!-- Lista de tarefas -->
-<h2>Lista de Tarefas</h2>
-<div class="row">
-  <div class="col-md-6">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let tarefa of tarefas">
-        {{ tarefa.titulo }}
-        <button class="btn btn-primary btn-sm" (click)="detalharTarefa(tarefa.id)">Detalhar</button>
-        <button class="btn btn-warning btn-sm" (click)="editarTarefa(tarefa)">Editar</button>
-        <button class="btn btn-danger btn-sm" (click)="excluirTarefa(tarefa.id)">Excluir</button>
-      </li>
-    </ul>
-  </div>
-</div>
+<app-navbar-authenticated></app-navbar-authenticated>
 
-<!-- Formulário para criar/editar tarefa -->
-<div class="row">
-  <div class="col-md-6">
-    <h2>{{ editando ? 'Editar Tarefa' : 'Criar Nova Tarefa' }}</h2>
-    <form (submit)="editando ? atualizarTarefa() : criarTarefa()">
-      <input *ngIf="editando" type="hidden" [(ngModel)]="tarefaEditando.id" name="id">
-      <div class="mb-3">
-        <label for="titulo" class="form-label">Título</label>
-        <input type="text" class="form-control" id="titulo" [(ngModel)]="tarefaEditando.titulo" name="titulo" required>
+<div class="wrapper">
+  <div class="main-content">
+    <div class="container mt-5 mb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="cadastro-card">
+            <div class="cadastro-header">
+              <form (ngSubmit)="criarNovaTarefa()" #cadastroForm="ngForm">
+
+                <!-- Informações da Tarefa -->
+                <h4>Informações da Tarefa</h4>
+                <div class="form-group">
+                  <label for="titulo">Título</label>
+                  <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="novaTarefa.titulo" required>
+                </div>
+                <div class="form-group">
+                  <label for="descricao">Descrição</label>
+                  <textarea class="form-control" id="descricao" name="descricao" [(ngModel)]="novaTarefa.descricao" required></textarea>
+                </div>
+
+                <!-- Informações da Equipe -->
+                <h4>Informações da Equipe</h4>
+                <div class="form-group">
+                  <label for="equipeId">ID da Equipe</label>
+                  <input type="number" class="form-control" id="equipeId" name="equipeId" [(ngModel)]="novaTarefa.equipe.id" required>
+                </div>
+
+                <!-- Mensagem de sucesso ou erro -->
+                <div *ngIf="submitted" class="alert" [ngClass]="{'alert-success': !hasError, 'alert-danger': hasError}" role="alert">
+                  <ng-container *ngIf="!hasError; else error">
+                    Tarefa cadastrada com sucesso!
+                  </ng-container>
+                  <ng-template #error>
+                    Ocorreu um erro ao cadastrar a tarefa. Por favor, tente novamente.
+                  </ng-template>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-2 focus-custom mt-4">Cadastrar</button>
+
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="descricao" class="form-label">Descrição</label>
-        <textarea class="form-control" id="descricao" [(ngModel)]="tarefaEditando.descricao" name="descricao" required></textarea>
-      </div>
-      <div class="mb-3">
-        <label for="equipeId" class="form-label">ID da Equipe</label>
-        <input type="number" class="form-control" id="equipeId" [(ngModel)]="tarefaEditando.equipeId" name="equipeId" required>
-      </div>
-      <button type="submit" class="btn btn-primary">{{ editando ? 'Atualizar' : 'Criar' }} Tarefa</button>
-      <button type="button" class="btn btn-secondary" (click)="limparFormulario()">Cancelar</button>
-    </form>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>

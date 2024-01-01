@@ -1,7 +1,7 @@
-import { Endereco } from 'src/app/model/Participante';
+import { Endereco } from './../../modelo/Participante';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Participante } from 'src/app/model/Participante';
+import { Participante } from './../../modelo/Participante';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -24,14 +24,14 @@ export class ProfileComponent implements OnInit {
 
   getProfileData(): void {
     if (this.userId) {
-      this.profileService.getProfile(this.userId).subscribe({
-        next: (data: Participante) => {
+      this.profileService.getProfile(this.userId).subscribe(
+        (data: Participante) => {
           this.user = data;
         },
-        error: (error: any) => {
+        (error) => {
           console.error('Erro ao obter os dados do perfil:', error);
         }
-      });
+      );
     }
   }
 }

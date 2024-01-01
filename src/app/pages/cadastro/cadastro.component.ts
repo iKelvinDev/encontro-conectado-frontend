@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { Participante } from 'src/app/model/Participante';
+import { Participante } from 'src/app/modelo/Participante';
 
 @Component({
   selector: 'app-cadastro',
@@ -29,7 +29,6 @@ export class CadastroUsuarioComponent {
       bairro: '',
       complemento: ''
     },
-    permissoes: [],
     encontros: []
   };
 
@@ -58,7 +57,6 @@ export class CadastroUsuarioComponent {
             bairro: '',
             complemento: ''
           },
-          permissoes: [],
           encontros: []
         };
         this.redirecionarParaLogin();

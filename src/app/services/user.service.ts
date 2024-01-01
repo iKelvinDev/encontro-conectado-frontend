@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Participante } from '../model/Participante';
+import { Participante } from '../modelo/Participante';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8080/participante';
+  private baseUrl = 'http://localhost:8080/participante'; // Endpoint do Spring Boot
 
   constructor(private http: HttpClient) { }
 

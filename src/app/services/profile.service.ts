@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProfileService {
-  private baseUrl = 'http://localhost:8080/participante';
+  private baseUrl = 'http://localhost:8080/participante'; // Seu endpoint no Spring Boot
 
   constructor(private http: HttpClient) {}
 

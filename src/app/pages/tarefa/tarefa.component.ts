@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Tarefa } from '../../model/Tarefa';
+import { Tarefa } from 'src/app/modelo/Tarefa';
 import { TarefaService } from 'src/app/services/tarefa.service';
 
 @Component({
@@ -8,58 +8,100 @@ import { TarefaService } from 'src/app/services/tarefa.service';
   styleUrls: ['./tarefa.component.scss']
 })
 export class TarefaComponent implements OnInit {
-
   tarefas: Tarefa[] = [];
-  tarefaEditando: Tarefa = { id: 0, titulo: '', descricao: '', equipeId: 0 };
-  editando: boolean = false;
+  submitted = false;
+  hasError = false;
+  novaTarefa: Tarefa = {
+    id: 0,
+    titulo: '',
+    descricao: '',
+    equipe: {
+      id: 0
+    }
+  };
+  tarefaDetalhada: Tarefa | null = null;
+  TarefaEditando = false;
 
-  constructor(private tarefaService: TarefaService) { }
+  constructor(private tarefaService: TarefaService) {}
 
   ngOnInit(): void {
     this.carregarTarefas();
   }
 
-  carregarTarefas() {
-    this.tarefaService.listarTarefas().subscribe((data: Tarefa[]) => {
-      this.tarefas = data;
-    });
+  carregarTarefas(): void {
+    this.tarefaService.listarTarefas().subscribe(
+      (data: Tarefa[]) => {
+        this.tarefas = data;
+      },
+      (error: any) => {
+        if (error.status === 403) {
+          // Tratar o erro 403 aqui
+          // Por exemplo, mostrar uma mensagem de erro amigável
+        } else {
+          console.error(error);
+        }
+      }
+    );
   }
 
-  detalharTarefa(id: number) {
-    this.tarefaService.obterTarefaPorId(id).subscribe((data: Tarefa) => {
-      // Implemente o que fazer com os detalhes da tarefa, como exibir em um modal
-    });
-  }
-
-  editarTarefa(tarefa: Tarefa) {
-    this.editando = true;
-    this.tarefaEditando = { ...tarefa }; // Cria uma cópia para edição
-  }
-
-  criarTarefa() {
-    this.tarefaService.cadastrarTarefa(this.tarefaEditando).subscribe(() => {
-      this.carregarTarefas();
-      this.limparFormulario();
-    });
-  }
-
-  atualizarTarefa() {
-    this.tarefaService.atualizarTarefa(this.tarefaEditando.id!, this.tarefaEditando).subscribe(() => {
-      this.carregarTarefas();
-      this.limparFormulario();
-    });
-  }
-
-  excluirTarefa(id: number) {
-    if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
-      this.tarefaService.removerTarefa(id).subscribe(() => {
+  criarNovaTarefa(): void {
+    this.tarefaService.cadastrarTarefa(this.novaTarefa).subscribe(
+      () => {
+        this.novaTarefa = {
+          id: 0,
+          titulo: '',
+          descricao: '',
+          equipe: {
+          id: 0
+          }
+        };
         this.carregarTarefas();
-      });
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+  }
+
+  atualizarTarefa(): void {
+    if (this.tarefaDetalhada) {
+      this.tarefaService.atualizarTarefa(this.tarefaDetalhada.id, this.tarefaDetalhada).subscribe(
+        () => {
+          this.tarefaDetalhada = {
+            id: 0,
+            titulo: '',
+            descricao: '',
+            equipe: {
+              id: 0
+            }
+          };
+          this.carregarTarefas();
+        },
+        (error: any) => {
+          console.error(error);
+        }
+      );
     }
   }
 
-  limparFormulario() {
-    this.editando = false;
-    this.tarefaEditando = { id: 0, titulo: '', descricao: '', equipeId: 0 };
+  editarTarefa(tarefa: Tarefa): void {
+    this.tarefaDetalhada = { ...tarefa }; // Clona a tarefa para editar
+    this.TarefaEditando = true;
+  }
+
+  cancelarEdicao(): void {
+    this.tarefaDetalhada = null;
+    this.TarefaEditando = false;
+  }
+
+  excluirTarefa(id: number): void {
+    this.tarefaService.deletarTarefa(id).subscribe(
+      () => {
+        this.carregarTarefas();
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
   }
 }

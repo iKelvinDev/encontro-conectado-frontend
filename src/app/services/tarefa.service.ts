@@ -1,34 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tarefa } from '../model/Tarefa';
-
+import { Tarefa } from '../modelo/Tarefa';
 @Injectable({
   providedIn: 'root'
 })
 export class TarefaService {
-
-  private baseUrl = 'http://localhost:8080/tarefa';
+  private apiUrl = 'http://localhost:8080/tarefa'; // Substitua pelo seu endereço de API
 
   constructor(private http: HttpClient) { }
 
   listarTarefas(): Observable<Tarefa[]> {
-    return this.http.get<Tarefa[]>(`${this.baseUrl}`);
-  }
-
-  obterTarefaPorId(id: number): Observable<Tarefa> {
-    return this.http.get<Tarefa>(`${this.baseUrl}/${id}`);
+    return this.http.get<Tarefa[]>(this.apiUrl);
   }
 
   cadastrarTarefa(tarefa: Tarefa): Observable<Tarefa> {
-    return this.http.post<Tarefa>(`${this.baseUrl}`, tarefa);
+    return this.http.post<Tarefa>(this.apiUrl, tarefa);
   }
 
   atualizarTarefa(id: number, tarefa: Tarefa): Observable<Tarefa> {
-    return this.http.put<Tarefa>(`${this.baseUrl}/${id}`, tarefa);
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.put<Tarefa>(url, tarefa);
   }
 
-  removerTarefa(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`, { responseType: 'text' });
+  deletarTarefa(id: number): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }

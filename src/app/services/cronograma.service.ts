@@ -1,4 +1,4 @@
-import { Cronograma } from 'src/app/model/Cronograma';
+import { Cronograma } from 'src/app/modelo/Cronograma';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CronogramaService {
-  private baseUrl = 'http://localhost:8080/cronograma';
+  private baseUrl = 'http://localhost:8080/cronograma'; // Atualize com o URL da sua API
 
   constructor(private http: HttpClient) { }
 
