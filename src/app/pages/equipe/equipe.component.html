@@ -1,0 +1,34 @@
+<!-- Lista de equipes -->
+<h2>Lista de Equipes</h2>
+<div class="row">
+  <div class="col-md-6">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let equipe of equipes">
+        {{ equipe.nome }}
+        <button class="btn btn-primary btn-sm" (click)="detalharEquipe(equipe.id)">Detalhar</button>
+        <button class="btn btn-warning btn-sm" (click)="editarEquipe(equipe)">Editar</button>
+        <button class="btn btn-danger btn-sm" (click)="excluirEquipe(equipe.id)">Excluir</button>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Formulário para criar/editar equipe -->
+<div class="row">
+  <div class="col-md-6">
+    <h2>{{ editando ? 'Editar Equipe' : 'Criar Nova Equipe' }}</h2>
+    <form (submit)="editando ? atualizarEquipe() : criarEquipe()">
+      <input *ngIf="editando" type="hidden" [(ngModel)]="equipeEditando.id" name="id">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="nome" [(ngModel)]="equipeEditando.nome" name="nome" required>
+      </div>
+      <div class="mb-3">
+        <label for="acessoTarefa" class="form-label">Acesso Tarefa</label>
+        <input type="text" class="form-control" id="acessoTarefa" [(ngModel)]="equipeEditando.acessoTarefa" name="acessoTarefa" required>
+      </div>
+      <button type="submit" class="btn btn-primary">{{ editando ? 'Atualizar' : 'Criar' }} Equipe</button>
+      <button type="button" class="btn btn-secondary" (click)="limparFormulario()">Cancelar</button>
+    </form>
+  </div>
+</div>

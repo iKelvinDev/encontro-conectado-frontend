@@ -18,6 +18,8 @@ import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
 import { EncontroComponent } from './pages/encontro/encontro.component';
 import { CronogramaComponent } from './pages/cronograma/cronograma.component';
+import { EquipeComponent } from './pages/equipe/equipe.component';
+import { TarefaComponent } from './pages/tarefa/tarefa.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { CronogramaComponent } from './pages/cronograma/cronograma.component';
     QuemSomosComponent,
     CadastroUsuarioComponent,
     EncontroComponent,
-    CronogramaComponent
+    CronogramaComponent,
+    EquipeComponent,
+    TarefaComponent
   ],
   imports: [
     BrowserModule,
