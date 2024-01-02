@@ -1,6 +1,8 @@
 import { Cronograma } from 'src/app/model/Cronograma';
+import { Participante } from 'src/app/model/Participante';
 
 export interface Encontro {
+
   id: number;
   titulo: string;
   ano: number;
@@ -8,9 +10,11 @@ export interface Encontro {
   nomeLocal: string;
   participantes: Participante[];
   cronograma: Cronograma[];
+
 }
 
 export interface Endereco {
+
   cep: string;
   estado: string;
   cidade: string;
@@ -18,13 +22,14 @@ export interface Endereco {
   numero: number;
   bairro: string;
   complemento: string;
+  
 }
 
-export interface Participante {
+/* export interface Participante {
   id: number;
   nome: string;
   // Propriedades relevantes do Participante
-}
+} */
 
 /* export interface Cronograma {
   nome: string;

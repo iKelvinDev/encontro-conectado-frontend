@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Tarefa } from 'src/app/modelo/Tarefa';
+import { Tarefa } from 'src/app/model/Tarefa';
 import { TarefaService } from 'src/app/services/tarefa.service';
 
 @Component({

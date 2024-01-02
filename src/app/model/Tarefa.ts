@@ -1,6 +1,12 @@
+import { Equipe } from "src/app/model/Equipe";
+
 export interface Tarefa {
+  
   id: number;
   titulo: string;
   descricao: string;
-  equipeId: number;
+  equipe: {
+    id: number;
+  };
+
 }

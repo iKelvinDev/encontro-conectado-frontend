@@ -1,35 +1,35 @@
 /* Estilo para o conteúdo principal */
 .main-content {
-    width: 80%;
-    margin: 0 auto; 
-    padding: 20px; 
-    background-color: #f4f4f4; /* Cor de fundo do conteúdo */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar o conteúdo */
-  }
-  
-.main-content h1 {
-  color: #333; /* Cor do texto */
+  width: 80%;
+  margin: 0 auto; 
+  padding: 20px; 
+  background-color: #f4f4f4; /* Cor de fundo do conteúdo */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar o conteúdo */
 }
-  
+
+.main-content h1 {
+color: #333; /* Cor do texto */
+}
+
 .main-content p {
-  color: #666; 
+color: #666; 
 }
 
 html, body {
-  height: 100%;
-  margin: 0;
+height: 100%;
+margin: 0;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
+display: flex;
+flex-direction: column;
 }
 
 main {
-  flex: 1;
+flex: 1;
 }
 
 /* Estilos para o footer */
 app-footer {
-  margin-top: auto;
+margin-top: auto;
 }
