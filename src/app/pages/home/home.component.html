@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENCONTRO CONECTADO</title>
-</head>
-<body>
+<header>
+  <app-navbar-unauthenticated></app-navbar-unauthenticated>
+</header>
 
-  <header>
-    <app-navbar-unauthenticated></app-navbar-unauthenticated>
-  </header>
+<main class="main-content">
+  <div class="content-wrapper">
+    <h1>SEGUE-ME</h1>
+    <hr class="title-line">
+    <p>
+      Com mais de 35 anos de história, o SEGUE-ME já evangelizou milhares de
+      jovens em dezenas de (Arqui)Dioceses do Brasil. O espírito do Encontro
+      consiste na comunhão fraterna entre jovens e casais, levando-os a uma
+      experiência profunda de intimidade com Deus. O SEGUE-ME proporciona a
+      casais e jovens um aprimoramento na sua comunicação, visando ampliar o
+      diálogo e o bom entendimento entre jovens e adultos de forma a melhorar o
+      relacionamento familiar e comunitário. Por isso, é do espírito do Encontro
+      que jovens e casais aprendam a trabalhar juntos e se esforcem para uma
+      melhor comunicação.
+    </p>
+    <button class="signup-button" [routerLink]="['/cadastro']">Cadastre-se</button>
+  </div>
+</main>
 
-  <!-- Conteúdo principal -->
-  <main>
-    <!-- Aqui incluir o componente ou conteúdo principal da página -->
-    <router-outlet></router-outlet>
-  </main>
-
-  <!-- Footer -->
-  <app-footer></app-footer>
-
-</body>
-</html>
+<app-footer></app-footer>

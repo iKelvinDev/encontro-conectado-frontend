@@ -1,66 +1,78 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
+@import "node_modules/bootstrap/scss/bootstrap";
 
 /* Estilos para o formulário de cadastro */
 .wrapper {
-  .main-content {
-    .container {
-      margin-top: 50px;
-      margin-bottom: 50px;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribui os itens ao longo do eixo principal */
+  min-height: 100vh; /* Define a altura mínima para ocupar a tela inteira */
+}
 
-  .cadastro-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 25px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    margin: 0 auto;
+.main-content {
+  flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo verticalmente */
+  justify-content: center; /* Centraliza o conteúdo horizontalmente */
+  padding-bottom: 100px; /* Garante que haja espaço suficiente para o footer */
+}
 
-    .cadastro-header {
-      h3 {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-    }
 
-    .form-group {
-      margin-bottom: 20px;
+.cadastro-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 60%;
+  margin: 0 auto;
 
-      label {
-        font-weight: bold;
-      }
-
-      input[type="text"],
-      input[type="login"],
-      input[type="tel"],
-      input[type="date"],
-      input[type="password"],
-      select {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin-top: 5px;
-        font-size: 16px;
-      }
-    }
-
-    .btn-primary:hover {
-      background-color: #8A4A2A !important;
-    }
-
-    button {
-      padding: 10px 10px;
+  .cadastro-header {
+    h3 {
       font-size: 16px;
-      background-color: #FFB819;
-      border-radius: 0.20rem;
-    }
-
-    /* Adicionando estilos para o foco do formulário */
-    .form-control:focus {
-      border-color: #8A4A2A;
-      box-shadow: 0 0 0 0.25rem #FFB819;
+      margin-bottom: 10px;
     }
   }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="login"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+  }
+
+  .btn-primary:hover {
+    background-color: #8a4a2a !important;
+  }
+
+  button {
+    padding: 10px 10px;
+    font-size: 16px;
+    background-color: #ffb819;
+    border-radius: 0.2rem;
+  }
+
+  /* Adicionando estilos para o foco do formulário */
+  .form-control:focus {
+    border-color: #8a4a2a;
+    box-shadow: 0 0 0 0.25rem #ffb819;
+  }
+}
+
+.app-footer {
+  margin-top: auto;
 }

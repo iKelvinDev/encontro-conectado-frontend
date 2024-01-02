@@ -1,35 +1,58 @@
-/* Estilo para o conteúdo principal */
+@import 'node_modules/bootstrap/scss/bootstrap';
+
 .main-content {
+  min-height: calc(100vh - 100px);
+  height: calc(100vh - 200px);
   width: 80%;
-  margin: 0 auto; 
-  padding: 20px; 
-  background-color: #f4f4f4; /* Cor de fundo do conteúdo */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar o conteúdo */
+  margin: 50px auto 20px;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  .content-wrapper {
+    text-align: left;
+    max-width: 720px;
+    margin: 0 20px;
+
+    .title-line {
+      display: block;
+      width: 38%;
+      margin: 15px 0;
+    }
+
+    h1 {
+      color: rgb(0, 0, 0);
+      margin-bottom: 10px;
+      text-align: left;
+      font-size: 36px;
+    }
+
+    p {
+      color: black;
+      text-align: justify;
+      margin-left: 0;
+    }
+
+    .signup-button {
+      background-color: gold;
+      color: black;
+      padding: 10px 25px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      cursor: pointer;
+      align-self: flex-start;
+
+      &:hover {
+        background-color: #FFB819;
+      }
+    }
+  }
 }
 
-.main-content h1 {
-color: #333; /* Cor do texto */
-}
-
-.main-content p {
-color: #666; 
-}
-
-html, body {
-height: 100%;
-margin: 0;
-}
-
-body {
-display: flex;
-flex-direction: column;
-}
-
-main {
-flex: 1;
-}
-
-/* Estilos para o footer */
 app-footer {
-margin-top: auto;
+  margin-top: auto;
 }
