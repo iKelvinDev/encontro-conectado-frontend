@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-import { Participante } from 'src/app/modelo/Participante';
+import { Participante } from 'src/app/model/Participante';
 
 @Component({
   selector: 'app-cadastro',

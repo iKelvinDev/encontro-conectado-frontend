@@ -16,7 +16,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuemSomosComponent } from './pages/quem-somos/quem-somos.component';
 import { CadastroUsuarioComponent } from './pages/cadastro/cadastro.component';
-import { tokenInterceptor } from './token.interceptor';
+import { tokenInterceptor } from './interceptors/token.interceptor';
 import { EncontroComponent } from './pages/encontro/encontro.component';
 import { CronogramaComponent } from './pages/cronograma/cronograma.component';
 import { EquipeComponent } from './pages/equipe/equipe.component';

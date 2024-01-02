@@ -1,7 +1,7 @@
-import { Endereco } from './../../modelo/Participante';
+import { Endereco } from './../../model/Participante';
 import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/services/profile.service';
-import { Participante } from './../../modelo/Participante';
+import { Participante } from './../../model/Participante';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({

@@ -1,5 +1,5 @@
-import { DiaSemana } from './../../modelo/Cronograma';
-import { Cronograma } from 'src/app/modelo/Cronograma';
+import { DiaSemana } from './../../model/Cronograma';
+import { Cronograma } from 'src/app/model/Cronograma';
 import { Component, OnInit } from '@angular/core';
 // import { CronogramaDTO } from 'src/app/modelo/Cronograma';
 import { CronogramaService } from 'src/app/services/cronograma.service';

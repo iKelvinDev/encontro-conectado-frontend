@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Tarefa } from '../modelo/Tarefa';
+import { Tarefa } from '../model/Tarefa';
 @Injectable({
   providedIn: 'root'
 })
 export class TarefaService {
-  private apiUrl = 'http://localhost:8080/tarefa'; // Substitua pelo seu endereço de API
+  private apiUrl = 'http://localhost:8080/tarefa';
 
   constructor(private http: HttpClient) { }
 

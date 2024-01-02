@@ -1,6 +1,6 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { Encontro } from 'src/app/modelo/Encontro'; // Importe o modelo de Encontro
+import { Encontro } from 'src/app/model/Encontro'; // Importe o modelo de Encontro
 import { EncontroService } from 'src/app/services/encontro.service';
 import { Router } from '@angular/router';
 

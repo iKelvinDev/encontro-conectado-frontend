@@ -1,4 +1,4 @@
-import { Encontro } from "./Encontro";
+import { Encontro } from "src/app/model/Encontro";
 
 export interface Cronograma {
   id: number;
