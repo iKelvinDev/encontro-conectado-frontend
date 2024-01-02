@@ -1,0 +1,182 @@
+<app-navbar-authenticated></app-navbar-authenticated>
+<div class="wrapper">
+  <div class="main-content">
+    <div class="container mt-5 mb-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="cadastro-card">
+            <div class="cadastro-header">
+              <form (ngSubmit)="criarNovoEncontro()" #cadastroForm="ngForm">
+
+                <!-- Informações do Encontro -->
+                <h4>Informações do Encontro</h4>
+                <div class="form-group">
+                  <label for="titulo">Título</label>
+                  <input type="text" class="form-control" id="titulo" name="titulo" [(ngModel)]="novoencontro.titulo" required>
+                </div>
+                <div class="form-group">
+                  <label for="ano">Ano</label>
+                  <input type="number" class="form-control" id="ano" name="ano" [(ngModel)]="novoencontro.ano" required>
+                </div>
+                <div class="form-group">
+                  <label for="nomeLocal">Nome do Local</label>
+                  <input type="text" class="form-control" id="nomeLocal" name="nomeLocal" [(ngModel)]="novoencontro.nomeLocal" required>
+                </div>
+
+                <!-- Endereço -->
+                <h4>Endereço</h4>
+                <div class="form-group">
+                  <label for="cep">CEP</label>
+                  <input type="text" class="form-control" id="cep" name="cep" [(ngModel)]="novoencontro.endereco.cep" required>
+                </div>
+                <div class="form-group">
+                  <label for="estado">Estado</label>
+                  <input type="text" class="form-control" id="estado" name="estado" [(ngModel)]="novoencontro.endereco.estado" required>
+                </div>
+                <div class="form-group">
+                  <label for="cidade">Cidade</label>
+                  <input type="text" class="form-control" id="cidade" name="cidade" [(ngModel)]="novoencontro.endereco.cidade" required>
+                </div>
+                <div class="form-group">
+                  <label for="rua">Rua</label>
+                  <input type="text" class="form-control" id="rua" name="rua" [(ngModel)]="novoencontro.endereco.rua" required>
+                </div>
+                <div class="form-group">
+                  <label for="numero">Número</label>
+                  <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="novoencontro.endereco.numero" required>
+                </div>
+                <div class="form-group">
+                  <label for="bairro">Bairro</label>
+                  <input type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="novoencontro.endereco.bairro" required>
+                </div>
+                <div class="form-group">
+                  <label for="complemento">Complemento</label>
+                  <input type="text" class="form-control" id="complemento" name="complemento" [(ngModel)]="novoencontro.endereco.complemento" required>
+                </div>
+
+<!--
+<h4>Participantes</h4>
+<div class="form-group">
+  <label for="participantes">Participantes</label>
+  <input type="text" class="form-control" id="participantes" name="participantes" [(ngModel)]="novoencontro.participantes" required>
+</div>
+
+
+<h4>Cronograma</h4>
+<div class="form-group">
+  <label for="cronograma">Cronograma</label>
+  <input type="text" class="form-control" id="cronograma" name="cronograma" [(ngModel)]="novoencontro.cronograma" required>
+</div> -->
+
+                <!-- Mensagem de sucesso ou erro -->
+                <div *ngIf="submitted" class="alert" [ngClass]="{'alert-success': !hasError, 'alert-danger': hasError}" role="alert">
+                  <ng-container *ngIf="!hasError; else error">
+                    Encontro cadastrado com sucesso!
+                  </ng-container>
+                  <ng-template #error>
+                    Ocorreu um erro ao cadastrar o encontro. Por favor, tente novamente.
+                  </ng-template>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-2 focus-custom mt-4">Cadastrar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Lista de Encontros -->
+    <div class="container mt-5">
+      <h2>Lista de Encontros</h2>
+      <ul class="list-group mt-3">
+        <li *ngFor="let encontro of encontros" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ encontro.titulo }}
+          <div>
+            <button class="btn btn-primary btn-sm mx-2" (click)="editarEncontro(encontro)">Editar</button>
+            <button class="btn btn-info btn-sm" (click)="detalharEncontro(encontro.id)">Detalhes</button>
+            <button class="btn btn-danger btn-sm" (click)="excluirEncontro(encontro.id)">Excluir</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+<!-- Formulário para editar um encontro -->
+<div *ngIf="encontroDetalhado && encontroEditando">
+  <h2>Editar Encontro</h2>
+  <form (submit)="atualizarEncontro()">
+    <input type="hidden" [(ngModel)]="encontroDetalhado.id" name="id">
+
+    <label>
+      Título:
+      <input type="text" [(ngModel)]="encontroDetalhado.titulo" name="titulo" required>
+    </label>
+
+    <label>
+      Ano:
+      <input type="number" [(ngModel)]="encontroDetalhado.ano" name="ano" required>
+    </label>
+
+    <!-- Campos do Endereço -->
+    <h3>Endereço:</h3>
+    <label>
+      CEP:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.cep" name="cep" required>
+    </label>
+
+    <label>
+      Estado:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.estado" name="estado" required>
+    </label>
+
+    <label>
+      Cidade:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.cidade" name="cidade" required>
+    </label>
+
+    <label>
+      Rua:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.rua" name="rua" required>
+    </label>
+
+    <label>
+      Número:
+      <input type="number" [(ngModel)]="encontroDetalhado.endereco.numero" name="numero" required>
+    </label>
+
+    <label>
+      Bairro:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.bairro" name="bairro" required>
+    </label>
+
+    <label>
+      Complemento:
+      <input type="text" [(ngModel)]="encontroDetalhado.endereco.complemento" name="complemento">
+    </label>
+    <!-- Fim dos campos do Endereço -->
+
+    <!-- Adicione outros campos necessários para editar um encontro -->
+
+    <button type="submit">Salvar Alterações</button>
+    <button (click)="cancelarEdicao()">Cancelar</button>
+  </form>
+</div>
+
+<!-- Detalhes do encontro selecionado -->
+<div *ngIf="encontroDetalhado && !encontroEditando">
+  <h2>Detalhes do Encontro</h2>
+  <p>ID: {{ encontroDetalhado.id }}</p>
+  <p>Título: {{ encontroDetalhado.titulo }}</p>
+  <p>Ano: {{ encontroDetalhado.ano }}</p>
+  <p>CEP: {{ encontroDetalhado.endereco.cep }}</p>
+  <p>Estado: {{ encontroDetalhado.endereco.estado }}</p>
+  <p>Cidade: {{ encontroDetalhado.endereco.cidade }}</p>
+  <p>Rua: {{ encontroDetalhado.endereco.rua }}</p>
+  <p>Número: {{ encontroDetalhado.endereco.numero }}</p>
+  <p>Bairro: {{ encontroDetalhado.endereco.bairro }}</p>
+  <p>Complemento: {{ encontroDetalhado.endereco.complemento }}</p>
+  <!-- Adicione outros detalhes específicos do encontro -->
+</div>
+
+  </div>
+  <app-footer></app-footer>
+</div>

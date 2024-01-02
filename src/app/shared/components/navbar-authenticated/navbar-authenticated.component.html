@@ -12,7 +12,9 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link" routerLink="/profile">PERFIL</a>
             <a class="nav-item nav-link" routerLink="/encontros">ENCONTROS</a>
-            <a class="nav-item nav-link" (click)="logout()">SAIR</a>
-        </div>
+            <a class="nav-item nav-link" routerLink="/cronograma">CRONOGRAMA</a>
+            <a class="nav-item nav-link" routerLink="/equipe">EQUIPE</a>
+            <button mat-button class="nav-item nav-link"  (click)="onlogoff()">SAIR</button>
+          </div>
     </div>
 </nav>

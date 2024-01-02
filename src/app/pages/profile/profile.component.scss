@@ -8,15 +8,27 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para o conteúdo principal */
 .wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 80vh;
+  min-height: 100vh; /* Ajuste para ocupar a altura total da tela */
 }
 
 .main-content {
-  flex: 1;
+  flex: 1; /* Ocupa o espaço restante */
+  position: relative; /* Defina como relativo para que os elementos internos respeitem */
+  padding-bottom: 60px; /* Altura do rodapé + margem */
+}
+
+/* Estilo para o footer */
+app-footer {
+  position: fixed; /* Posicionamento fixo para o rodapé */
+  bottom: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+  padding: 10px 0;
+  z-index: 1; /* Z-index superior para o footer */
 }
 
 /* Estilo do cabeçalho do perfil */
@@ -36,9 +48,4 @@
 
 .profile-body li {
   margin-bottom: 10px;
-}
-
-/* Estilo para o footer */
-app-footer {
-  width: 100%;
 }

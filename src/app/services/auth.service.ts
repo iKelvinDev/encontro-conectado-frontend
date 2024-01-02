@@ -1,35 +1,71 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080';
-
+  private baseUrl = 'http://localhost:8080/login';
+  private participanteId: number | undefined;
   constructor(private http: HttpClient) { }
 
-  login(credentials: { email: string, senha: string }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
-      map((response: any) => {
-        // salvar o token JWT no localStorage após o login
-        localStorage.setItem('token', response.token);
-        return response; // retornar qualquer informação relevante recebida do backend
-      }),
-      catchError((error) => {
-        // erros de login
-        console.error('Erro ao fazer login:', error);
-        return of(null); // retorna um Observable com valor nulo em caso de erro
+  private isTokenExpired(token: string): boolean {
+    const currentTimestamp = Math.floor(Date.now() / 1000);
+
+    // Convertendo o token para número
+    const tokenExpiration = parseInt(token, 10); // Supondo que o token seja um timestamp
+
+    // Verificando se o token está expirado
+    return tokenExpiration < currentTimestamp;
+  }
+  setParticipanteId(id: number): void {
+    this.participanteId = id;
+  }
+
+  getParticipanteId(): number | undefined {
+    return this.participanteId;
+  }
+  getUserId(): number | undefined {
+    const storedUserId = localStorage.getItem('id');
+    console.log('Stored User ID:', storedUserId); // Verifique o valor armazenado
+
+    return storedUserId ? parseInt(storedUserId, 10) : undefined;
+  }
+
+
+  login(login: string, senha: string): Observable<any> {
+    return this.http.post<any>(this.baseUrl, { login, senha }).pipe(
+      tap((response) => {
+        if (response && response.token && response.id) {
+
+          // Verifica se o token atual está expirado
+          const storedToken = localStorage.getItem('token');
+          if (storedToken && this.isTokenExpired(storedToken)) {
+            localStorage.removeItem('token'); // Remove o token expirado
+          }
+        // Armazena o token no localStorage
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('id', response.id);
+        }
       })
     );
   }
-
-  logout(): void {
-    // remover o token do localStorage após o logout
-    localStorage.removeItem('token');
+  logoff(): void {
+    localStorage.clear();
   }
+
+
+  estaAutenticado(): boolean {
+    if (localStorage.getItem('token')) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
 
   getUserInfo(): Observable<any> {
     // obter informações do usuário do backend, usando o token JWT
@@ -41,7 +77,7 @@ export class AuthService {
     }
 
     // chamada à API para obter as informações do usuário, usando o token
-    return this.http.get<any>(`${this.apiUrl}/user-info`, {
+    return this.http.get<any>(`${this.baseUrl}/user-info`, {
       headers: {
         Authorization: `Bearer ${token}` // adiciona o token JWT no cabeçalho da requisição
       }
@@ -67,5 +103,5 @@ export class AuthService {
       })
     );
   }
-
+ 
 }

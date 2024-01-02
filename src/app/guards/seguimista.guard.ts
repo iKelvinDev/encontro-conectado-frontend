@@ -10,15 +10,20 @@ export class SeguimistaGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
   canActivate(): boolean {
-    const userType = this.authService.getUserType();
-
-    if (userType === 'seguimista') {
-      return true;
-    } else {
-      if (this.router.url !== '/login') {
-        this.router.navigate(['/']);
+    this.authService.getUserType().subscribe(userType => {
+      if (userType === 'seguimista') {
+        // Continue com a navegação
+        return true;
+      } else {
+        if (this.router.url !== '/login') {
+          this.router.navigate(['/']);
+        }
+        // Bloqueia a navegação
+        return false;
       }
-      return false;
-    }
+    });
+
+    // Por padrão, bloqueia a navegação até que o tipo de usuário seja obtido
+    return false;
   }
 }
