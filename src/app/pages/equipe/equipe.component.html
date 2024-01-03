@@ -17,11 +17,13 @@
                 </div>
                 <div class="form-group">
                   <label for="acessoTarefa">Acesso à Tarefa</label>
-                  <input type="text" class="form-control" id="acessoTarefa" name="acessoTarefa" [(ngModel)]="novaEquipe.acessoTarefa" required>
+                  <input type="text" class="form-control" id="acessoTarefa" name="acessoTarefa"
+                    [(ngModel)]="novaEquipe.acessoTarefa" required>
                 </div>
 
                 <!-- Mensagem de sucesso ou erro -->
-                <div *ngIf="submitted" class="alert" [ngClass]="{'alert-success': !hasError, 'alert-danger': hasError}" role="alert">
+                <div *ngIf="submitted" class="alert" [ngClass]="{'alert-success': !hasError, 'alert-danger': hasError}"
+                  role="alert">
                   <ng-container *ngIf="!hasError; else error">
                     Equipe cadastrada com sucesso!
                   </ng-container>
@@ -30,11 +32,11 @@
                   </ng-template>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100 py-2 mt-2 focus-custom mt-4">Cadastrar</button>
+                <button type="submit" class="btn btn-primary yellow-btn w-100 py-2 mt-2 focus-custom mt-4">Cadastrar</button>
                 <div class="equipe-info">
                   <!-- Outras informações da equipe -->
                   <p>Criar tarefas relacionadas a Equipe:</p>
-                  <button (click)="acessarTarefas()">Criar Tarefas</button>
+                  <button class="btn btn-primary yellow-btn" (click)="acessarTarefas()">Criar Tarefas</button>
                 </div>
               </form>
             </div>
@@ -43,51 +45,51 @@
       </div>
     </div>
     <!-- Lista de Equipes -->
-<div class="container mt-5">
-  <h2>Lista de Equipes</h2>
-  <ul class="list-group mt-3">
-    <li *ngFor="let equipe of equipes" class="list-group-item d-flex justify-content-between align-items-center">
-      {{ equipe.nome }}
-      <div>
-        <button class="btn btn-primary btn-sm mx-2" (click)="editarEquipe(equipe)">Editar</button>
-        <button class="btn btn-info btn-sm" (click)="detalharEquipe(equipe.id)">Detalhes</button>
-        <button class="btn btn-danger btn-sm" (click)="deletarEquipe(equipe.id)">Excluir</button>
+    <div class="container mt-5">
+      <h2>Lista de Equipes</h2>
+      <ul class="list-group mt-3">
+        <li *ngFor="let equipe of equipes" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ equipe.nome }}
+          <div class="btn-group" role="group" aria-label="Ações">
+            <button class="btn btn-primary btn-md mt-3 mx-1" (click)="editarEquipe(equipe)">Editar</button>
+            <button class="btn btn-info btn-md mt-3 mx-1" (click)="detalharEquipe(equipe.id)">Detalhes</button>
+            <button class="btn btn-danger btn-md mt-3 mx-1" (click)="deletarEquipe(equipe.id)">Excluir</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Formulário para editar uma equipe -->
+    <div *ngIf="equipeDetalhada && EquipeEditando" class="cadastro-card card">
+      <h2 class="card-header">Editar Equipe</h2>
+      <form class="card-body" (submit)="atualizarEquipe()">
+        <input type="hidden" [(ngModel)]="equipeDetalhada.id" name="id">
+
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" [(ngModel)]="equipeDetalhada.nome" name="nome" required class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="acessoTarefa">Acesso à Tarefa</label>
+          <input type="text" [(ngModel)]="equipeDetalhada.acessoTarefa" name="acessoTarefa" required
+            class="form-control">
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3 mx-2">Salvar Alterações</button>
+        <button (click)="cancelarEdicao()" class="btn btn-danger mt-3 mx-2">Cancelar</button>
+      </form>
+    </div>
+
+    <!-- Detalhes da equipe selecionada -->
+    <div *ngIf="equipeDetalhada && !EquipeEditando" class="cadastro-card card">
+      <h2 class="card-header">Detalhes da Equipe</h2>
+      <div class="card-body">
+        <p><strong>ID: </strong> <span class="text-bold">{{ equipeDetalhada.id }}</span></p>
+        <p><strong>Nome: </strong> <span class="text-bold">{{ equipeDetalhada.nome }}</span></p>
+        <p><strong>Acesso à Tarefa: </strong> <span class="text-bold">{{ equipeDetalhada.acessoTarefa }}</span></p>
       </div>
-    </li>
-  </ul>
-</div>
-
-<!-- Formulário para editar uma equipe -->
-<div *ngIf="equipeDetalhada && EquipeEditando">
-  <h2>Editar Equipe</h2>
-  <form (submit)="atualizarEquipe()">
-    <input type="hidden" [(ngModel)]="equipeDetalhada.id" name="id">
-
-    <label>
-      Nome:
-      <input type="text" [(ngModel)]="equipeDetalhada.nome" name="nome" required>
-    </label>
-
-    <label>
-      Acesso à Tarefa:
-      <input type="text" [(ngModel)]="equipeDetalhada.acessoTarefa" name="acessoTarefa" required>
-    </label>
-
-    <!-- Adicione outros campos necessários para editar uma equipe -->
-
-    <button type="submit">Salvar Alterações</button>
-    <button (click)="cancelarEdicao()">Cancelar</button>
-  </form>
-</div>
-
-<!-- Detalhes da equipe selecionada -->
-<div *ngIf="equipeDetalhada && !EquipeEditando">
-  <h2>Detalhes da Equipe</h2>
-  <p>ID: {{ equipeDetalhada.id }}</p>
-  <p>Nome: {{ equipeDetalhada.nome }}</p>
-  <p>Acesso à Tarefa: {{ equipeDetalhada.acessoTarefa }}</p>
-  <!-- Adicione outros detalhes específicos da equipe -->
-</div>
+    </div>
   </div>
   <app-footer></app-footer>
 </div>
