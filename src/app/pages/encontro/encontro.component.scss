@@ -9,6 +9,11 @@
     }
   }
 
+  .text-bold {
+    font-size: 15px;
+  }
+  
+
   .cadastro-card {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -18,10 +23,14 @@
     margin: 0 auto;
 
     .cadastro-header {
-      h3 {
-        font-size: 16px;
+      h4 {
+        font-size: 18px;
         margin-bottom: 10px;
       }
+    }
+
+    .yellow-button {
+      background-color: #FFB819;
     }
 
     .form-group {
@@ -32,11 +41,7 @@
       }
 
       input[type="text"],
-      input[type="login"],
-      input[type="tel"],
-      input[type="date"],
-      input[type="password"],
-      select {
+      input[type="number"] {
         width: 100%;
         padding: 8px;
         border: 1px solid #ccc;
@@ -51,10 +56,10 @@
     }
 
     button {
-      padding: 10px 10px;
+      padding: 10px 20px;
       font-size: 16px;
-      background-color: #FFB819;
       border-radius: 0.20rem;
+      margin-top: 10px;
     }
 
     /* Adicionando estilos para o foco do formulário */
@@ -63,6 +68,4 @@
       box-shadow: 0 0 0 0.25rem #FFB819;
     }
   }
-
-
 }
